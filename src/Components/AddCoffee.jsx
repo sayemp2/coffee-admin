@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 const AddCoffee = () => {
     const handleAdditem = event => {
         event.preventDefault();
@@ -20,6 +22,14 @@ const AddCoffee = () => {
             .then(res => res.json()
                 .then(data => {
                     console.log(data);
+                    if(data.insertedId){
+                        Swal.fire({
+                            title: 'success!',
+                            text: 'Add item Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                          })
+                    }
                 })
             )
     }
