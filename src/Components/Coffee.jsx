@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 const Coffee = ({ coffee, coffees, setCoffees }) => {
-    const { _id, name, Chef,   Details,  Photo } = coffee
+    const { _id, name, Chef, Details, Photo } = coffee
     const handleDelete = _id => {
 
         Swal.fire({
@@ -49,7 +50,9 @@ const Coffee = ({ coffee, coffees, setCoffees }) => {
                 <div className="justify-end">
                     <div className="join join-vertical space-y-1">
                         <button className="btn bg-green-400 text-white join-item">View</button>
-                        <button className="btn bg-green-600 text-white join-item">Edit</button>
+                        <Link to={`UpdateCoffee/${_id}`}>
+                            <button className="btn bg-green-600 text-white join-item">Edit</button>
+                        </Link>
                         <button onClick={() => handleDelete(_id)} className="btn bg-red-600 text-white join-item">Delete</button>
                     </div>
                 </div>
