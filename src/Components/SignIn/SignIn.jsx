@@ -10,7 +10,18 @@ const SignIn = () => {
         const password = form.password.value;
         signInUser(email, password)
             .then(result => {
+                const user = {
+                    email,
+                    lastSignInTime : result.user?.metadata?.lastSignInTime
+                }
                 console.log(result)
+                fetch('http://localhost:5000/user',{
+                    method:'PATCH',
+                    headers:{
+                        'content-type':'application/json'
+                    },
+                    body:JSON.stringify(user)
+                })
             })
             .catch(error => {
                 console.log(error);
